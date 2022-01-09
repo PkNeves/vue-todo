@@ -26,8 +26,11 @@ export default {
 		}
 	},
 	watch: {
-		tasks() {
-			localStorage.setItem('tasks', JSON.stringify(this.tasks))
+		tasks: {
+			deep: true, // analisa profundamente o array, monitorando tambem as mudanças internas
+			handler() {
+				localStorage.setItem('tasks', JSON.stringify(this.tasks))
+			}
 		}
 	},
 	methods: {
